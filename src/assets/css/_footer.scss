@@ -1,0 +1,35 @@
+.footer {
+    position: relative;
+    background-color: $header_color;
+    grid-area: footer;
+
+}
+
+.footer__main {}
+
+.footer__menu {}
+
+.footer__body {
+    display: grid;
+    grid-template: 80px/1fr 0fr;
+    place-items: center flex-start;
+
+    @media (max-width: #{$burger_media}) {
+        grid-template: 80px/2fr 1fr;
+    }
+}
+
+.footer_copyrate {
+    color: $m_color;
+}
+
+.button_footer {
+    position: absolute;
+    right: 5px;
+    bottom: 0;
+}
+
+.menu__row_footer {
+    display: grid;
+    column-gap: 15px;
+}

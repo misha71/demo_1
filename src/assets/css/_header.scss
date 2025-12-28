@@ -1,0 +1,34 @@
+.header {
+    @include header(fixed);
+    z-index: 2;
+    grid-area: header;
+
+    &:before {
+        content: "";
+        @extend %full_size;
+        background-color: $header_color;
+        z-index: 2;
+    }
+}
+
+.header__row {
+    display: grid;
+    grid-template: 1fr/1fr 1fr 4fr 1fr;
+    //align-items: center;
+    place-items: center flex-start;
+    min-height: 80px;
+}
+
+.header__logo {
+    width: 80px;
+    margin: 0 10px 0 0;
+    z-index: 3;
+}
+
+.header__logo img {
+    max-width: 100%;
+}
+
+.header__modal {
+    z-index: 3;
+}

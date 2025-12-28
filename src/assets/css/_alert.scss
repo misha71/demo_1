@@ -1,0 +1,16 @@
+.page__alert {
+    cursor: pointer;
+    margin-bottom: 20px;
+    min-height: 100px;
+    padding: 20px;
+}
+
+.page__alert__danger {
+    background-color: color(srgb 0.8507 0.3077 0.3099);
+    color: white;
+}
+
+.page__alert__success {
+    background-color: color(srgb 0.2888 0.7231 0.3984);
+    color: white;
+ }

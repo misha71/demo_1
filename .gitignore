@@ -1,0 +1,63 @@
+# Node.js и npm
+node_modules/
+npm-debug.log
+yarn-error.log
+yarn.lock
+
+# Бинарные файлы и файлы сборки
+/build/
+.DS_Store
+
+# Конфигурационные файлы
+.env.local
+.env.development
+.env.test
+.env.production
+
+# VS Code
+.vscode/
+
+# Модули IDE/editor
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Для MacOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Логи и временные файлы
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Локальные базы данных
+db.sqlite
+db.sqlite3
+
+# Editor directories
+.idea/
+
+# Папки проекта
+/.vscode/
+/.yarn/
+
+# Файлы Windows
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+ehthumbs.db
+
+# Файлы macOS
+.AppleDouble
+.DS_Store
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk

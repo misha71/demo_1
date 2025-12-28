@@ -1,0 +1,20 @@
+.button {
+  padding: 10px;
+  display: inline-block;
+  text-decoration: none;
+  border-radius: 10px;
+  white-space: nowrap;
+  cursor: pointer;
+  color: #ffffff;
+}
+.button__error {
+  background-color: rgb(185, 46, 46);
+}
+
+.button__success {
+  background-color: rgb(50, 149, 50);
+}
+
+.button__grey {
+  background-color: rgb(122, 126, 122);
+}

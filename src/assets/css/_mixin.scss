@@ -1,0 +1,120 @@
+// Ограничивающий котейнер
+@mixin container($padding_left) {
+    max-width: $maxWidthContainer;
+    padding: 0px $padding_left;
+    margin: 0px auto;
+    //box-sizing: content-box;
+}
+
+@mixin header($position) {
+    position: $position;
+    width: 100%;
+    left: 0;
+    top: 0;
+}
+
+// содержимое header, центрированное по вертикальной оси
+@mixin header__row($min_height: 0) {
+    @if ($min_height !=0) {
+        min-height: $min_height;
+    }
+
+    display: flex;
+    align-items: center;
+}
+
+// для flex контейнера
+@mixin row($row_direction: start, $column_direction: start, $wrap: nowrap, $direction: row) {
+    display: flex;
+    justify-content: $row_direction;
+    align-items: $column_direction;
+    flex-wrap: $wrap;
+    flex-direction: $direction;
+}
+
+// Для вычисления междустрочного интервала - интервал по макету/шрифт по макету
+@mixin line_height($line_height, $font_size) {
+    line-height: $line_height / $font_size * 100%;
+}
+
+// $all -  если не задан, то для задания отступов для всех непосредственных
+// дочерних блоков, кроме последнего, иначе для отмены оступа в блоках $class
+@mixin margin_gap($class, $direction, $size, $all: ">*") {
+    #{$class}#{$all}:not(:last-child) {
+        margin-#{$direction}: $size;
+    }
+}
+
+// Для flex контейнера
+@mixin section_items($mt: 0, $mx: 0, $mb: 0) {
+    // wrap позволит блока перестоиться на адаптиве
+    @include row(start, start, wrap);
+    margin: $mt $mx $mb;
+}
+
+// Для flex дочернего элемента
+// $flex_width - ширина для flex элемента в процентах
+// $px - горизонтальные внутренние отступы = отступ по макету между блоками / 2
+// $mb - для аадптива, чтобы когда блоки встанут в два ряда между ними было расстояние
+@mixin section_item($flex_grow, $flex_width, $px, $mb) {
+    // wrap позволит блока перестоиться на адаптиве
+    flex: $flex_grow 1 $flex_width;
+    padding: 0 $px;
+    margin: 0 0 $mb 0;
+}
+
+@mixin button($py, $px) {
+    @include row(center, center);
+    padding: $py $px;
+}
+
+@mixin adaptiv-value($property, $startSize, $minSize, $maxWidthContainer: 1024, $type: '') {
+    $addSize: $startSize - $minSize;
+
+    @if $type==1 {
+        //Только если меньше контейнера
+        #{$property}: $startSize + px;
+
+        @media (max-width: #{$maxWidthContainer + px}) {
+            #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidthContainer - 320}));
+        }
+    }
+
+    @else if $type==2 {
+        //Только если больше контейнера
+        #{$property}: $startSize + px;
+
+        @media (min-width: #{$maxWidthContainer + px}) {
+            #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidthContainer - 320}));
+        }
+    }
+
+    @else {
+        //Всегда
+        #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidthContainer - 320}));
+    }
+}
+
+@mixin adaptiv-font($pcSize, $mobSize) {
+    $addSize: $pcSize - $mobSize;
+    $addMobSize: $addSize + $addSize * 0.7;
+
+    @media (max-width: 767px) {
+        font-size: calc(#{$mobSize + px} + #{$addMobSize} * ((100vw - 320px) / #{$maxWidthContainer}));
+    }
+
+    @media (min-width: 767px) {
+        font-size: calc(#{$mobSize + px} + #{$addSize} * (100vw / #{$maxWidthContainer}));
+    }
+}
+// подкючение шрифтов
+@mixin font($font_name, $file_name, $weight, $style) {
+    @font-face {
+        font-family: $font_name;
+        font-display: swap;
+        src: url("../fonts/#{$file_name}.woff") format("woff"),
+        url("../fonts/#{$file_name}.woff2") format("woff2");
+        font-weight: #{$weight};
+        font-style: #{$style};
+    }
+}

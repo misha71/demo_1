@@ -1,0 +1,32 @@
+.header__menu {
+  z-index: 3;
+}
+
+.menu__row {
+  display: grid;
+  grid-auto-flow: column;
+  place-content: flex-start;
+}
+
+@include margin_gap(".menu__item", right, 20px, "");
+
+.menu__link {
+  color: $m_color;
+
+  &:hover {
+    color: $m_color_hover;
+  }
+}
+
+.menu__icon {
+  color: $m_color;
+}
+
+.menu__item {
+  &:hover {
+    color: $m_color_hover;
+  }
+}
+
+@import "menu_burger.scss";
+//@import "menu_sub.scss";
